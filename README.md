@@ -14,7 +14,11 @@ Behavioral analysis (detecting suspicious user interactions)
 
 Features
 
-Machine Learning-Powered Detection – Uses trained models to classify websites as phishing or safe.Multi-Layered Security – Combines URL-based, text-based, SSL, and behavior analysis for accurate classification.Real-Time Browser Extension – Provides instant feedback to users when they visit a potentially malicious site.Customizable Thresholds – Reduces false positives with improved classification logic.Fast and Efficient – Optimized for minimal performance impact.
+➢ Behavioural Analysis of Websites
+➢ AI-Based Content (text), URL, and SSL Analysis
+➢ Multi-Layered AI Detection
+➢ Multi-Layered Security
+➢ Real-Time Browser Extension
 
 Installation & Setup
 
@@ -55,3 +59,5 @@ When browsing, the extension will automatically check each visited website.
 If a site is classified as phishing, a warning notification appears.
 
 The extension also logs user interactions for behavioral analysis.
+
+Contributors: Aditi P Acharya, K Charan Kandibilla
