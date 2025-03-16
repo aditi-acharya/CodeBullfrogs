@@ -19,9 +19,9 @@ VECTORIZER_PATH = os.path.join("ai_model", "vectorizer.pkl")
 try:
     with open(MODEL_PATH, "rb") as model_file:
         url_model = pickle.load(model_file)
-    print("✅ URL Model loaded successfully")
+    print("URL Model loaded successfully")
 except Exception as e:
-    print(f"❌ Error loading URL model: {e}")
+    print(f"Error loading URL model: {e}")
     url_model = None
 
 # Load Text-based phishing detection model
@@ -30,9 +30,9 @@ try:
         text_model = pickle.load(text_model_file)
     with open(VECTORIZER_PATH, "rb") as vectorizer_file:
         vectorizer = pickle.load(vectorizer_file)
-    print("✅ Text Model and Vectorizer loaded successfully")
+    print("Text Model and Vectorizer loaded successfully")
 except Exception as e:
-    print(f"❌ Error loading text model: {e}")
+    print(f"Error loading text model: {e}")
     text_model = None
     vectorizer = None
 
