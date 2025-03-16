@@ -22,6 +22,22 @@ Features
 ➢ Multi-Layered Security
 ➢ Real-Time Browser Extension
 
+Features of model.py and model2.py which are the 2 ML models:
+
+model.py (Phishing Detection Using Multiple ML Models):
+- The script loads a dataset containing phishing-related features, preprocesses the data by encoding categorical variables, and normalizes numerical features.
+  
+- It trains and evaluates multiple machine learning models, including Random Forest, Logistic Regression, SVM, XGBoost, KNN, and Neural Networks, to classify websites as phishing or legitimate.
+  
+- After model comparison, it fine-tunes the XGBoost classifier using GridSearchCV and cross-validation, saving the best-performing model as best_model.pkl.
+
+model2.py (Phishing Detection Based on Webpage Text):
+- This script focuses on phishing detection using textual content by extracting and vectorizing webpage text with TF-IDF and handling class imbalance using SMOTE.
+  
+- It trains an XGBoost classifier on the text-based features, optimizing it with hyperparameters such as max_depth, learning_rate, and n_estimators.
+  
+- The trained model is evaluated using accuracy, precision, and recall metrics, and the final model along with the vectorizer is saved as text_model.pkl and vectorizer.pkl.
+
 Installation & Setup
 
 1️⃣ Clone the Repository
