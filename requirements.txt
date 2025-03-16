@@ -1,0 +1,8 @@
+Flask
+numpy
+pandas
+scikit-learn
+xgboost
+requests
+bs4
+pickle5
