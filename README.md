@@ -12,6 +12,8 @@ SSL certificate validation
 
 Behavioral analysis (detecting suspicious user interactions)
 
+Check out the document "CodeBullfrogs" in the main branch for more info on the project and output screenshots.
+
 Features
 
 ➢ Behavioural Analysis of Websites
@@ -56,7 +58,7 @@ Usage
 
 When browsing, the extension will automatically check each visited website.
 
-If a site is classified as phishing, a warning notification appears.
+If a site is classified as phishing, you can check on service wroker (of chrome extension) that it is classified as such.
 
 The extension also logs user interactions for behavioral analysis.
 
