@@ -1,3 +1,5 @@
+console.log("Content script is running!");
+
 let mouseMovements = [];
 let clicks = [];
 let keystrokes = [];
@@ -17,6 +19,11 @@ document.addEventListener("keydown", (event) => {
     keystrokes.push({ key: event.key, timestamp: Date.now() });
 });
 
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log("Message received in content script:", message);
+    sendResponse({ status: "Message received" });
+});
+
 // Function to send data to background script
 const sendData = () => {
     if (chrome.runtime?.id) {
@@ -28,7 +35,6 @@ const sendData = () => {
                 console.log("Response received:", response);
               }
             });
-          
 
         // Clear stored events after sending
         mouseMovements = [];

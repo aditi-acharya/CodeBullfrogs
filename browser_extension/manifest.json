@@ -2,7 +2,15 @@
   "manifest_version": 3,
   "name": "Phishing Behavior Detector",
   "version": "1.0",
-  "permissions": ["storage", "notifications", "scripting", "activeTab"],
+  "permissions": [
+    "storage",
+    "notifications",
+    "scripting",
+    "activeTab",
+    "declarativeNetRequest",
+    "webNavigation"
+  ],
+  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },

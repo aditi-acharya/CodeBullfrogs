@@ -7,37 +7,35 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             body: JSON.stringify(message.data),
             headers: { "Content-Type": "application/json" }
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Backend response:", data);
-
-            if (data.is_suspicious) {
-                showNotification("Suspicious Behavior Detected!", "This website may be phishing.");
-            }
-        })
-        .catch(error => {
-            console.error("Fetch error:", error);
-        });
+        .then(response => response.json())
+        .then(data => console.log("Backend Response:", data))
+        .catch(error => console.error("Fetch error:", error));
     }
 });
 
-// Function to show notification in background.js
-function showNotification(title, message) {
-    chrome.notifications.create({
-        type: "basic",
-        iconUrl: chrome.runtime.getURL("icons/icon48.png"),
-        title: title,
-        message: message
-    }, (notificationId) => {
-        if (chrome.runtime.lastError) {
-            console.error("Notification error:", chrome.runtime.lastError);
-        } else {
-            console.log("Notification created:", notificationId);
-        }
-    });
-}
+// Handle tab updates to check URLs
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (changeInfo.status === "complete") {
+        const apiUrl = "http://127.0.0.1:5000/analyze-url";
+        console.log("Checking URL:", tab.url);
+
+        fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ url: tab.url }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("API Response:", data);
+            if (data.is_phishing) {
+                chrome.notifications.create({
+                    type: "basic",
+                    iconUrl: "icons/icon48.png",
+                    title: "Phishing Alert!",
+                    message: `${tab.url} is a phishing site!`,
+                });
+            }
+        })
+        .catch(error => console.error("API Error:", error));
+    }
+});
